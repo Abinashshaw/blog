@@ -1,4 +1,4 @@
-<%= form_for @article do |f| %>
+
     <% if @article.errors.any? %>
         <div id="error-explaination">
             <h2>
@@ -6,19 +6,25 @@
             </h2>
             <ul>
                 <% @article.errors.full_messages.each do |msg| %>
-                    <li>msg</li>
+                    <li><%=msg%></li>
                 <% end %>
             </ul>
         </div>
     <% end %>
-    
-    <p>
-        <strong><%= f.label :title %></strong><br/>
-        <%= f.text_field :title %>
-    </p>
-    <p>
-        <strong><%= f.label :text %></strong></br/>
-        <%= f.text_area :text %>
-    </p>
-    <p> <%= f.submit %>
+    <div class = "row">
+    <div class = "col-xs-12">
+    <%= form_for @article do |f| %>
+        <div class="form-group">
+            <div class="col-sm-2 control-label">
+                <%= f.label :title %>
+            </div>
+            <%= f.text_field :title %>
+        </div>
+        <div class="form-group">
+            <strong><%= f.label :text %></strong></br/>
+            <%= f.text_area :text %>
+        </div>
+        <div class="form-group">
+            <%= f.submit %>
+        </div>
 <% end %>
